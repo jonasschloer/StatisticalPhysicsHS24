@@ -96,5 +96,28 @@ ___
 
 ## 3.4.1 Spin 1/2
 
+Consider N quantum spin 1/2 moments (Spin $S=\frac{\hbar}{2}$) where for each spin the hilbert space contains 2 states, $|s,s_{z}\rangle = \left\{ |\frac{1}{2}, \pm \frac{1}{2}\rangle \right\}$ for chosen quantization along the z-axis. 
 
- 
+In a magnetic field, moments are described by the hamiltonian $$\mathcal H = \sum_{i=1}^{N} \mathcal H_{i} = -\frac{\mu_{B}g}{\hbar} \sum_{i=1}^{N}H\cdot \hat{S_{i}} = -\frac{g\mu_{B}}{2} \sum_{i=1}^{N}H \cdot \hat{\sigma}_{i}.$$
+
+ - $\mu_{B}$ is the Bohr magneton and $g=2$ the gyromagnetic ratio.
+ - **Pauli Matrices** given as $$\hat\sigma_x = 
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}, \quad
+\hat\sigma_y = 
+\begin{pmatrix}
+0 & -i \\
+i & 0
+\end{pmatrix}, \quad
+\hat\sigma_z = 
+\begin{pmatrix}
+1 & 0 \\
+0 & -1
+\end{pmatrix},$$ with $\sigma_{0}$ the 2x2 unit matrix. 
+- Spin states are spinors (+1/2 is (1,0)...)
+- Following properties: $$\begin{align}
+(a \cdot \hat \sigma)(b \cdot \hat{\sigma}) = a \cdot b \ \hat{\sigma^{0}} + i(a \times b) \cdot \hat{ \sigma}  \\
+(a \cdot \hat{ \sigma})^{2n} &=
+\end{align}$$
