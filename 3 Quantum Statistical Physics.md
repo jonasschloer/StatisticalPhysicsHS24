@@ -94,7 +94,7 @@ ___
 
 # 3.4 Ideal quantum paramagnet - canonical ensemble
 
-
+## 3.4.1 Spin 1/2
 
 
  
