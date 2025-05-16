@@ -117,7 +117,36 @@ i & 0
 0 & -1
 \end{pmatrix},$$ with $\sigma_{0}$ the 2x2 unit matrix. 
 - Spin states are spinors (+1/2 is (1,0)...)
-- Following properties: $$\begin{align}
-(a \cdot \hat \sigma)(b \cdot \hat{\sigma}) = a \cdot b \ \hat{\sigma^{0}} + i(a \times b) \cdot \hat{ \sigma}  \\
-(a \cdot \hat{ \sigma})^{2n} &=
+- Following properties to determine **partition function**: $$\begin{align}
+(a \cdot \hat \sigma)(b \cdot \hat{\sigma}) &= a \cdot b \ \hat{\sigma^{0}} + i(a \times b) \cdot \hat{ \sigma}  \\
+(a \cdot \hat{ \sigma})^{2n} &= |a|^{2n}=\hat{ \sigma}^{0} \\
+(a \cdot \hat{ \sigma})^{2n+1} &= |a|^{2n}a \cdot \hat{ \sigma} \\
+\text{Tr }\hat{ \sigma} &= 0, \quad\text{Tr }\hat{ \sigma}^{0}=2 \\
+\Rightarrow \boxed{Z} &= \text{Tr } e^{-\beta H} = \text{Tr }e^{\beta \mu_{B} \sum_{i} H \cdot \hat{ \sigma_{i}}} = (\text{Tr }e^{\beta \mu_{B} H \cdot \hat{ \sigma}})^{N} \\
+&= (Tr \{  \hat{ \sigma}^{0} \cosh(\beta \mu_{B} H) + \hat{ H} \cdot \hat{ \sigma} \sinh(\beta \mu_{B}H) \})^{N}  \\
+&= \boxed{(2\cosh(\beta \mu_{B}|H|))^{N}} 
 \end{align}$$
+- Obtain **free energy**$$F = -Nk_{B}T \log[2 \cosh(\beta \mu_{B}H)] = \begin{cases}
+-N\mu_{B}H \quad &k_{B}T \ll\ \mu_{B}H  \\
+-Nk_{B}T\log_{2} \quad &k_{B}T \gg \mu_{b}H
+\end{cases}$$
+	- Interpret as $F=U-TS \rightarrow$ dominated by internal energy U at low and by entropy $S=k_{B}\log_{2}^{N}= Nk_{B}\log_{2}$ in high-temperature limit
+
+**Entropy** given as $$S(T) = -\frac{ \partial F }{ \partial T } =Nk_{B}\log[2 \cosh(\beta \mu_{B}H)] - N k_{B}\beta\mu_{B}H \tanh(\beta \mu_{B}H)$$
+	- goes to zero for $T\to 0$ and thus satisfies the third law of thermodynamics
+
+**Magnetization:** $$\begin{align}
+\langle  M_{n}\rangle &=\mu_{B}\sum_{i=1}^{N}\langle  \hat{ n}\cdot \hat{\sigma}_{i}\rangle = \mu_{B}N \langle  \hat{ n}\cdot \hat{ \sigma}_{1}\rangle  \\
+&= N \frac{ \text{Tr }(\mu_{B}\hat{n}\cdot \hat{ \sigma} \{  \hat{ \sigma}^{0} \cosh(\beta \mu_{B} H) + \hat{ H} \cdot \hat{ \sigma} \sinh(\beta \mu_{B}H) \} )}{2\cosh(\beta \mu_{B}H)} \\
+&= N \hat{n}\cdot \hat{H} \mu_{B} \tanh(\beta \mu_{B}H) \\
+\end{align} $$
+- $\hat{n}$ is a normal vector and $\hat{H}$ is $\frac{\mathbf{H}}{|H|}$.
+
+**Magnetic susceptibility:** Assume a moment along z: $\mathbf{H} \parallel \hat{z}$. Then $$\chi_{zz} = \dots = \frac{\mu_{B}^{2}N}{k_{B}T} \frac{1}{\cosh^{2}(\beta \mu_{B}H)}$$
+- For high temperatures ($k_{B}T \gg \mu_{B}H$) yields *Curie-behavior:* $$\chi_{zz}(T)=\frac{\mu_{B}^{2}N}{k_{B}T}$$
+HkbdWdvssssaM!1
+
+
+
+
+
