@@ -165,4 +165,43 @@ $$
 ## 3.4.2 Spin S - classical limit
 
 Now larger wuantum spins with magnitude $S=\hbar s$ with $s \in \{\text{Integer or half integer}\}$. Hilbert space contains $2s+1$ basis states $\{|s,s_{z}\rangle\} = \{|s,-s \rangle ,|s, -s+1\rangle, \dots, |s,s \rangle\}$.
-- Have operators for *total spin* $\hat{\mathbf{S}}^{2}|s,s_{z}\rangle = \hbar^{2}s(s+1)|s,s_{z}\rangle$ and *spin state* $\hat{S}_{z} |s,s_{z}\rangle = \hbar s_{z} |s,s_{z}\rangle$.
+- Have operators for *total spin* $\hat{\mathbf{S}}^{2}|s,s_{z}\rangle = \hbar^{2}s(s+1)|s,s_{z}\rangle$ and *spin projection operator* $\hat{S}_{z} |s,s_{z}\rangle = \hbar s_{z} |s,s_{z}\rangle$.
+
+Apply magnetic field in parallel $z$-direction of the N independent spins. 
+- **Hamiltonian** $$\mathcal H = -\frac{g\mu_{B}}{\hbar } \sum_{i=1}^{N} \hat{\mathbf{S}}\cdot \mathbf{H} = -\frac{g\mu_{B}}{\hbar} \sum^{N}\hat{S}_{i}^{z}H$$
+- **Partition function** $$\begin{align}
+Z &= \text{Tr} \left\{ e^{-\beta \mathcal{H}} \right\}  \\
+&= \text{Tr} \left\{ \bigotimes_{i=1}^{N} e^{\beta g \mu_B H \hat{S}_i^z / \hbar} \right\} 
+&&\quad \text{| Hamiltonian is diagonal in \( \hat{S}^z \), trace factorizes over \( N \) particles} \\
+&= \left( \sum_{s_z=-s}^{s} \langle s, s_z | e^{\beta g \mu_B H \hat{S}^z / \hbar} | s, s_z \rangle \right)^N 
+&&\quad \text{| Trace becomes sum over spin states \( |s, s_z\rangle \)} \\
+&= \left( \sum_{s_z = -s}^{s} e^{\beta g \mu_B H s_z} \right)^N 
+&&\quad \text{| Eigenvalue of \( \hat{S}^z \) is \( s_z \), in units of \( \hbar = 1 \)} \\
+&= \left( e^{-\beta g \mu_B H s} \sum_{n=0}^{2s} e^{\beta g \mu_B H n} \right)^N 
+&&\quad \text{| Rewriting sum over \( s_z = -s + n \), for \( n = 0 \ldots 2s \)} \\
+&= \left( \frac{ e^{-\beta g \mu_B H s} \left( e^{\beta g \mu_B H (2s+1)} - 1 \right)}{e^{\beta g \mu_B H} - 1} \right)^N 
+&&\quad \text{| Geometric series: \( \sum_{n=0}^{k} x^n = \frac{x^{k+1}-1}{x-1} \)} \\
+&= \left( \frac{ \sinh \left( \beta \mu_B H (2s+1)/2 \right) }{ \sinh \left( \beta \mu_B H /2 \right) } \right)^N 
+&&\quad \text{| Final closed form using identity: \( \sinh(nx)/\sinh(x) \) from exponential sums}
+
+\end{align}$$
+- **Free energy** $$F=-Nk_{B}T\log \{\frac{\sinh(\beta \mu_{B}H(2s+1))}{\sinh(\beta \mu_{B}H)}\}$$
+	- reduces to result from [[#3.4.1 Spin 1/2]].
+- **Internal energy**$$U=-N\mu_{B}H\{(2s+1) \coth(\beta \mu_{B}H(2s+1)) - \coth(\beta \mu_{B}H)\} = -N \mu_{B}H_{2}sB_{s}(\beta \mu_{B}H)$$
+	- with *Brillouin function* ... (page 39)
+- **Heat capacity**: $C_{V} = \frac{ d U }{ d T }$ in quantum formulation approaches classical heat capacity as spin $s$ increases: ![[QuantumHeatCapacity.png|500]]
+- **Magnetization**: Expressed with Brillouin function $$M_{z} = g\mu_{B}\sum^{N} \langle  \hat{S}_{i}^{z} \rangle  = N \mu_{B}2sB_{s}(\beta \mu_{B}H)$$
+	- identify **internal enery** now as $U=-M_{z}H$
+	- Other components vanish $M_{x} = M_{y}=0$
+
+- *Classical Limit:* Get classical result for $s \gg{1}$: #ToDo page 40 footnote
+	- now simultaneously fix $2s\mu_{B}=m$ to be finite and take *high-temperature limit* $k_{B}T \gg mH$ to find
+		- Free energy $F=-Nk_{B}T \log{2}s$
+		- Entropy $S=Nk_{B}\log 2s$ (same as $S_{0}$ in classical case)
+	- *low-temperature limit*: Find 2 regimes:  
+		- $2sk_{B}T \gg mH \gg k_{B}T:$ find essentially low-temperature classical regime solution
+		- $mh \gg 2sk_{B}T:$ obtain wuantum limit. The quantum range shrinks for increasing $s$.
+
+___
+# 3.5 Ideal quantum gas - grand canonical ensemble
+
