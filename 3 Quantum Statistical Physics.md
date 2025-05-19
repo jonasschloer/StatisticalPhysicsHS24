@@ -161,3 +161,8 @@ $$
 **Magnetic susceptibility:** Assume a moment along z: $\mathbf{H} \parallel \hat{z}$. Then $$\chi_{zz} = \dots = \frac{\mu_{B}^{2}N}{k_{B}T} \frac{1}{\cosh^{2}(\beta \mu_{B}H)}$$
 - For high temperatures ($k_{B}T \gg \mu_{B}H$) yields *Curie-behavior:* $$\chi_{zz}(T)=\frac{\mu_{B}^{2}N}{k_{B}T}$$
 	- -> Magnetic susceptibility decreases with higher temperature #Insights
+
+## 3.4.2 Spin S - classical limit
+
+Now larger wuantum spins with magnitude $S=\hbar s$ with $s \in \{\text{Integer or half integer}\}$. Hilbert space contains $2s+1$ basis states $\{|s,s_{z}\rangle\} = \{|s,-s \rangle ,|s, -s+1\rangle, \dots, |s,s \rangle\}$.
+- Have operators for *total spin* $\hat{\mathbf{S}}^{2}|s,s_{z}\rangle = \hbar^{2}s(s+1)|s,s_{z}\rangle$ and *spin state* $\hat{S}_{z} |s,s_{z}\rangle = \hbar s_{z} |s,s_{z}\rangle$.
