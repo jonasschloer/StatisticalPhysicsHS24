@@ -205,3 +205,143 @@ Z &= \text{Tr} \left\{ e^{-\beta \mathcal{H}} \right\}  \\
 ___
 # 3.5 Ideal quantum gas - grand canonical ensemble
 
+Important factor in gas of independent quantum particles: Classified in Fermions (follow Pauli principle, cannot find two of them in the same state) and Bosons (no restrictions).
+Many-particle systems of Bosins is described by completely symmetric wavefunction under pairwise exchange. System of Fermions is completely antisymmetric. Discuss later in next chapter #ToDo link
+
+Free particles represented by plane waves: $$\psi_{\mathbf p}(\mathbf{r}) = \langle  \mathbf{ r} | \psi_{\mathbf{ p}} \rangle  = \frac{1}{\sqrt{ V }} e^{i\mathbf{p}\cdot \mathbf{r}\frac{1}{\hbar r}} \quad\text{with}\quad\epsilon_{\mathbf{p}}=\frac{\mathbf{p}^{2}}{2m}$$
+Introduce periodic boundary conditions and wuantize the momentum quantum number:
+- Assume subic system with $V=L^3$. 
+- Wavefunciton satisfies $\psi_{p}(r+(L,0,0)) = \dots=\psi_{p}(r)$ if $p=\frac{2\pi \hbar}{L}(n_{x},n_{y},n_{z}) = \frac{h}{L}(n_{x},n_{y},{n_{z}})\quad\text{with}\quad n\in \mathbb{Z}$
+	- $\Rightarrow$ periodic boundary conditions lead to *momentum quantization*
+
+ **Grand partition function** for such a gas: $$\mathcal  Z=\sum_{\{n_{\mathbf{p}}\}} g_{\{n_{p}\}}e^{-\beta(E-\mu N)_{\{n_{p}\}}} \quad\text{with}\quad E=\sum_{p}\epsilon_{p}n_{p}, \quad N=\sum_{p}n_{p}$$
+ - $n_{p}$ is *occupation number* (= number of particles per state). Sum runs over all allowed configurations of occupations. 
+ - Factor $g_{\{n_{p}\}}$ is 1 for indistinguishable particles (Fermions and Bosons) and $\prod_{p} \frac{1}{n_{p}!}$ for classical particles (Boltzmann) #clarify I still dont understand the difference...
+- Each many-particle quantum state for indistinguishable particles includes all permutations through the total symmtryzation (Bosons) or antisymmetrization (Fermions) of the wavefunction #clarify what?
+	- Fermions have occupation number $n_{p}\in \{0,1\}$ for each state and Bosons $n_{p}=0,1,2,\dots$
+
+**Partition function**: With fugacity $z=e^{\beta \mu}$ have  $$\begin{align}
+\mathcal Z&= \sum_{n_{p_{1}},n_{p_{2}},\dots} [\{z e^{-\beta \epsilon_{p_{1}}}\}^{n_{p_{1}}} \cdot\{z e^{-\beta \epsilon_{p_{2}}}\}^{n_{p_{2}}}\cdot \dots] && \text{sum over occupation number configurations}\\
+&=\prod_{p}\sum_{n_{p}}(z e^{-\beta\epsilon_{p}})^{n_{p}} && \text{non-interacting}\\
+&=\begin{cases}
+\prod_{p}(1+ ze^{-\beta\epsilon_{p}}) &\text{Fermions} \\
+\prod_{p}  \frac{1}{(1+ ze^{-\beta\epsilon_{p}})} &\text{Bosons}
+\end{cases}
+\end{align}$$
+**Equation of state** from partition function: $$\frac{pV}{k_{B}T}=-\beta \Omega(T,V,\mu) = \begin{cases}
+~~~\sum_{p}\log(1+ze^{-\beta\epsilon_{p}}) &\text{Fermions} \\
+-\sum_{p} \log(1-ze^{-\beta\epsilon_{p}}) &\text{Bosons}
+\end{cases}$$
+**Particle number:** $$N=z \frac{ \partial  }{ \partial z } \log \mathcal Z = \begin{cases}
+\sum_{p} \frac{1}{e^{\beta\epsilon_{p}}z^{-1}+1} &\text{Fermions} \\
+\sum_{p} \frac{1}{e^{\beta\epsilon_{p}}z^{-1}-1} &\text{Bosons}
+\end{cases}$$
+**Occupation number of a state** $$\langle n_{p}\rangle  = \dots=-k_{B}T \frac{ \partial  }{ \partial \epsilon_{p} } \log \mathcal Z=\begin{cases}
+\frac{1}{z^{-1}e^{\beta\epsilon_{p}}+1} &\text{Fermions} \\
+\frac{1}{z^{-1}e^{\beta\epsilon_{p}-1}}&\text{Bosons}
+\end{cases}$$
+- Correspond to *Fermi-Dirac* and *Bose-Einstein* distirbutions #clarify
+
+**Grand potential** (plus for Fermions, minus for Bosons): $$\Omega = \dots=-\frac{2}{3} V \frac{1}{8\pi^{2}} \left( \frac{2m}{\hbar^{2}} \right)^{\frac{3}{2}} \int_{0}^{\infty}  \frac{\epsilon^{\frac{3}{2}}}{z^{-1}e^{\beta\epsilon} \pm 1}  d\epsilon$$
+- used *density of states* for energy integration $g(\epsilon ) = \sum_{p}\delta(\epsilon-\epsilon_{p}) = V \frac{1}{8\pi^{2}}\left( \frac{2m}{\hbar^{2}} \right)^{\frac{3}{2}}\epsilon^{1/2}$
+
+**Internal Energy $$U=\sum_{p}\langle n_{p} \rangle  \epsilon_{p} = \int_{0}^{\infty} g(\epsilon) \frac{\epsilon}{z^{-1}e^{\beta \epsilon}\pm 1}d\epsilon = V \frac{1}{8\pi^{2}} \left( \frac{2m}{\hbar^{2}} \right)^{\frac{3}{2}}  \int_{0}^{\infty} \frac{\epsilon^{3/2}}{z^{-1} e^{\beta \epsilon}\pm 1}d\epsilon$$
+- From $\Omega=-pV$ obtain general relation: $U=\frac{3}{2}pV$
+- So far *did not include spin* s of particles in considerations! Introduces another factor $2s+1$ to $\Omega$ and $U$.
+
+#Insights: 
+- This is base model for understanding other quantum gases
+	-  Fermi gas in metals (Fermions)
+	- Photon or phonon gases or Bose-Einstein condensates (Bosons)
+- Can derive other quantities from these equations
+	- Heat capacity
+	- compressibility
+	- chemical potential
+	- Need to be able to compare this to classic Boltzmann Gas [[2 Classical Statistical Physics#2.4.2 Ideal gas - grand canonical treatment]]  #ToDo  .
+
+
+# 3.6 Fermi gas
+
+Consider now Fermions with spin $s$. Have $2s+1$ different species. 
+Use relation $\sum_{p}=\frac{V}{\hbar^{3}} \int d^{3}p$ from page 42 to get
+- **equation of state** $$\frac{p}{k_{B}T} = \frac{4\pi}{h^{3}}(2s+1) \int_{0}^{\infty} p^{2}\log(1+ze^{-\beta \epsilon_{p }}) dp$$
+- **particle number** (general expression) $$n = \frac{1}{v} = \frac{N}{V}= \frac{4\pi}{h^{3}} (2s+1) \int_{0}^{\infty} p^{2} \frac{1}{z^{-1}e^{\beta \epsilon_{p}}+1} dp$$
+- 
+Use *Fermi-Dirac integrals* (with apparently interesting limits #ToDo) $$\begin{align}
+f_{\frac{5}{2}}(z) &= -\sum_{l=1}^{\infty}(-1)^{l} \frac{z^{l}}{l^{\frac{5}{2}}} \quad\lim_{z \gg_{1}} \dots \text{page 43}\\
+f_{\frac{3}{2}}(z) &= -\sum_{l=1}^{\infty}(-1)^{l} \frac{z^{l}}{l^{\frac{3}{2}}}
+\end{align}$$
+- Espress above with the *thermal de Broglie wavelength* $\lambda=  h/ \sqrt{ 2\pi mk_{B}T }$ as $$\begin{align}
+\frac{p}{k_{B}T}&=\frac{2s+1}{\lambda^{3}} f_{\frac{5}{2}}(z) \\
+n = \frac{1}{v} &= \frac{2s+1}{\lambda^{3}} f_{\frac{3}{2}}(z)
+\end{align}$$
+## 3.6.1 High-temperature and low-density limit
+
+Low density (= and high temperature), implies $\lambda^{3}n \ll{1}$ and $z=e^{\beta \mu} \ll 1$.
+- From special functions limits: $\lambda^{3}n = (2s+1)\left\{ z - \frac{z^{2}}{2^{\frac{3}{2}}} +\dots\right\} \Rightarrow z=\frac{\lambda^{3}n}{2s+1} + \frac{(\lambda^{3}n)^{2}}{2^{\frac{3}{2}}(2s+1)^{2}}+\dots$
+- **Equation of state** in high-temperature limit: $$\frac{p}{k_{B}T}\approx\frac{2s+1}{\lambda^{3}} \left\{ z - \frac{z^{2}}{2^{\frac{5}{2}}} \right\}\approx \frac{N}{V} \left\{ 1+ \underbrace{\frac{\lambda^{3}n}{2^{\frac{5}{3}}(2s+1)}}_{\begin{align} \text{quantum correction to}  \\
+\text{classical ideal gas limit}
+\end{align}}    \right\}$$
+	- Compare to [[2 Classical Statistical Physics#2.4.2 Ideal gas - grand canonical treatment]] 
+	- pressure increases due to Pauli exclusion principle
+- **Isothermal compressibility** $$\kappa_{T}=-\frac{1}{V} \left( \frac{ \partial V }{ \partial p }  \right)_{T,N} = \frac{V}{Nk_{B}T} \left\{  1+ \frac{\lambda^{3}n}{2^{\frac{5}{2}}(2s+1)}  \right\}$$
+	- Compared to [[2 Classical Statistical Physics#2.5.2 Particle number]], see that compressibility is reduced in quantum correction. Is consequence of Pauli exclusion principle, as Fermions avoid each other #clarify 
+- **Occupation number** $$\langle n_{p}\rangle = \frac{1}{z^{-1}e^{\beta \epsilon_{p}} +1} \approx ze^{-\beta \epsilon_{p}} \approx \frac{\lambda^{3}n}{2s+1} e^{-\beta \epsilon_{p}} = \frac{1}{2s+1} \frac{nh^{3}}{(2\pi mk_{B}T)^{\frac{3}{2}}} e^{-\beta \epsilon_{p }}$$
+	- Corresponds to *Maxwell-Boltzman distribution* per spin #clarify #ToDo Link
+- **Internal Energy** $$U \approx \frac{3}{2} Nk_{B}T \left\{  1 + \frac{\lambda^{3}n}{2^{\frac{5}{3}}(2s+1)} \right\}$$
+- **Heat capacity** $$C_{V} = \frac{3}{2} N k_{B} \left\{ 1- \frac{\lambda^{3}n}{2^{\frac{7}{2}}(2s+1)} \right\}$$
+
+## 3.6.2 Low-temperature and high-density limit: degenerate Fermi gas
+At low temperatures, reach "quantum limit": $\lambda^{3}n \gg 1$, implying *large fugacity* $z$.
+
+### Zero temperature
+Occupation numbers follow step function: $$\langle  n_{p}\rangle  = \Theta(\mu-\epsilon_{p}) = \begin{cases}
+1,&\epsilon_{p} \lt \mu \\
+0,&\epsilon \gt \mu
+\end{cases}$$
+- $\Rightarrow$ all states up to fermi energy are filled
+
+Fermions occupy *Fermi sphere* in momentum space. **Particle density** is $$n=\frac{N}{V} = 2s+\frac{1}{h^{3}} \int \langle  n_{p}\rangle d^{3}p  =  2s+\frac{1}{h^{3}} \frac{4\pi}{3} p_{F}^{3} = \frac{(2s+1)k_{F}^{3}}{6\pi^{2}},$$with *isotropic Fermi momentum* $\epsilon_{F}= \epsilon_{p_{F}}=\mu(T=0)$ and *Fermi wavevector* $k_{F}=\frac{p_{F}}{\hbar}$
+
+**(Ground state) internal energy** $$U_{0} = \frac{2s+1}{h^{3}} V\int \epsilon_{p}\langle  n_{p }\rangle  d^{3}p  =  \frac{2s+1}{h^{3}} 4\pi V\int p^{2}\frac{p^{2}}{2m}dp = \frac{2s+1}{h^{3}} \frac{4\pi V}{5} p_{F}^{3} \frac{p_{F}^{2}}{2m} = \frac{3}{5} N\epsilon_{F}$$with *Fermi energy* $\epsilon_{F}$. 
+
+**zero-point pressure** obtained from [[#3.5 Ideal quantum gas - grand canonical ensemble|general internal energy]]: $p_{0}=\frac{2}{3} \frac{U_{0}}{V}=\frac{2}{5} \frac{N}{V} \epsilon_{F}$
+- Unlike [[2 Classical Statistical Physics#2.3.3 Ideal gas - canonical treatment|classical ideal gas]], where pressure is 0 at zero-point, Fermi gas has finite zero-point pressure. This is a consequence of pauli principle and responsible forthe stability of metals and neutron stars. 
+
+### Finite temperatures
+Occupation number broadens the fermi pressure step. 
+Use special functions and particle density from above to get $$\left( \frac{\epsilon_{F}}{k_{B}T} \right)^{\frac{3}{2}} = \frac{3}{4}  \frac{\sqrt{ \pi }\lambda^{3}}{2s+1} \frac{N}{V} = \left( \frac{\mu}{k_{B}T} \right)^{\frac{3}{2}} + \frac{\pi^{2}}{8}\left( \frac{\mu}{k_{B}T} \right)^{- \frac{1}{2}}+\dots$$
+
+- For constatnt density $n=\frac{N}{V}$, can solve for **chemical potential** $$\mu(T) = \epsilon_{F}\left(  1- \frac{\pi^{2}}{12} \left( \frac{k_{B}T}{\epsilon_{F}} \right)^{2}+\dots \right)$$
+- analogously, obtain for **pressure** $$p(T) = p_{0}\left(  1 + \frac{5\pi^{2}}{12} \left( \frac{k_{B}T}{\epsilon_{F}} \right)^{2}+\dots\right)$$
+- **internal energy** from $U=\frac{3}{2}pV$: $$U = \frac{3}{2}pV=U_{0}\left( 1+ \frac{5\pi^{2}}{12}\left( \frac{k_{B}T}{\epsilon_{F}} \right)^{2}+\dots \right)$$
+- From this, derive **heat capacity** for fixed N: $$C_{V}=\left( \frac{ \partial U }{ \partial T }  \right)_{V,N} = \frac{5\pi^{2}}{6} U_{0} \frac{k_{B}^{2}T}{\epsilon_{F}^{2}}+\dots=\frac{\pi^{2}}{2} k_{B}^{2}\frac{N}{\epsilon_{F}}T+\dots \propto T$$
+	- Famous linear temperature dependence of the heat capacity. Observe for electrons in simple metals $C_{V}=\gamma T+\dots$ for *Sommerfeld coefficient* $\gamma$.
+	- Now third law of thermodynamics is satisfied: $C_{N} \lim_{T\to{0}}0$ 
+	- Also, entropy goes linearly to zero
+- ![[quantumComparison-internalEnergyAndHeatCapacity.png]]
+___
+#Insights 
+- In *classical limit*, Fermi gas behaves like ideal gas with small quantum corrections (where is this?)
+- in *quantum limit*, Pauli exclusion principle dominates: 
+	- Fermions fill all states up to Fermi level
+	- System resists compression and has nonzero zero-point pressure and energy
+- Transition between both regimes controlled by dimensionless parameter $\lambda^{3}n$
+- Fermi gas is standard model conduction electrons in metals and neutron star matter at high densities
+
+## 3.6.3 Spin 1/2 Fermions in a magnetic field - Ideal paramagnetic gas
+
+*Ideal paramagnetic gas* = spin $s=\frac{1}{2}$ Fermions in magetic field. Hamiltonian with field along z-axis needs to be expanded by *Zeeman term*: $$\mathcal H_{Z}=-\frac{g\mu_{B}}{\hbar}\sum_{i=1}^{N} s_{i}^{z}H$$
+
+Absorb energy difference between spins parallel and antiparallel to applied field into *spin-dependent fugacity*: $$z_{\pm} = e^{\beta \mu\pm \beta \mu_{B}H}$$
+- **particle density** now given as $$n=\frac{N}{V}=\frac{1}{v}=\frac{1}{\lambda^{3}} \left\{  f_{\frac{3}{2}} (z_{+}) + f_{\frac{3}{2}}(z_{-})  \right\}=: n_{+}+n_{-}$$
+- **magnetization** $$m=\frac{M}{V} = \mu_{B}(n_{+}-n_{-}) = \frac{\mu_{B}}{\lambda^{3}} \left\{   f_{\frac{3}{2}}(z_{+}) - f_{\frac{3}{2}}(z_{-})   \right\}$$
+- **Spin susceptibility** for *zero magnetic field* with $z=e^{\beta \mu}$: $$\chi = \frac{ \partial m }{ \partial H } \bigg|_{H=0} = \frac{\mu_{B}^{2}}{\lambda^{3}k_{B}T} 2z \frac{ \partial f_{\frac{3}{2}}(z) }{ \partial z } \bigg|_{H=0} = \frac{2\mu_{B}^{2}}{\lambda^{3}k_{B}T} f_{\frac{1}{2}}(z)$$
+	- *High-temperature limit*: Replace $z \ll 1$ with expression from [[#3.6.1 High-temperature and low-density limit]] and find $$\chi= \mu_{B}^{2} \frac{n}{k_{B}T} \left\{ 1- \frac{\lambda^{3}n}{2^{5/2}} \right\}$$
+		- First term is for particles with spin and behaves like *Curie* #ToDo link
+		- Second term is quantim correction and reduces susceptibility
+- *Low-temperature limit*: Take only lowest order for $z \gg 1$ and obtain $$\chi= \frac{\mu_{B}^{2}}{\lambda^{3}k_{B}T} \frac{4}{\sqrt{ \pi }} (\log z)^{\frac{1}{2}} =  \frac{\mu_{B}^{2}}{\lambda^{3}k_{B}T} \frac{4}{\sqrt{ \pi }} \left( \frac{\epsilon_{F}}{k_{B}T} \right)^{\frac{1}{2}} = \mu_{B}^{2} \frac{3n}{2\epsilon_{F}}$$
+	- Famous *Pauli spin susceptibility for a fermi gas*. Is temperature independent.
+
+___
+# 3.7 Bose gas
