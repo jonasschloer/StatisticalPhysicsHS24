@@ -3,6 +3,7 @@ noteID: 0551b893-6440-4e65-aac9-2bfb78d5a127
 tags: 
 ---
 ___
+
 # 1.1 Micro states with same energy
 
 Consider system of N atoms in $z$ different mictostates $\{s_{i}^{\nu}\}$. $s_{i}$ is a vector with one component being one and the others zero (the state of the i-th atom).

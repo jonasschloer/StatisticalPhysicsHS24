@@ -228,10 +228,7 @@ Introduce periodic boundary conditions and wuantize the momentum quantum number:
 \prod_{p}  \frac{1}{(1+ ze^{-\beta\epsilon_{p}})} &\text{Bosons}
 \end{cases}
 \end{align}$$
-**Equation of state** from partition function: $$\frac{pV}{k_{B}T}=-\beta \Omega(T,V,\mu) = \begin{cases}
-~~~\sum_{p}\log(1+ze^{-\beta\epsilon_{p}}) &\text{Fermions} \\
--\sum_{p} \log(1-ze^{-\beta\epsilon_{p}}) &\text{Bosons}
-\end{cases}$$
+**Equation of state** from partition function:  $$\frac{pV}{k_{B}T}=-\beta \Omega(T,V,\mu) = \begin{cases} ~~~\sum_{p}\log(1+ze^{-\beta\epsilon_{p}}) &\text{Fermions} \\ -\sum_{p} \log(1-ze^{-\beta\epsilon_{p}}) &\text{Bosons} \end{cases}$$
 **Particle number:** $$N=z \frac{ \partial  }{ \partial z } \log \mathcal Z = \begin{cases}
 \sum_{p} \frac{1}{e^{\beta\epsilon_{p}}z^{-1}+1} &\text{Fermions} \\
 \sum_{p} \frac{1}{e^{\beta\epsilon_{p}}z^{-1}-1} &\text{Bosons}
@@ -263,6 +260,7 @@ Introduce periodic boundary conditions and wuantize the momentum quantum number:
 # 3.6 Fermi gas
 
 Consider now Fermions with spin $s$. Have $2s+1$ different species. 
+Important: *Neglect all particle interactions!*
 Use relation $\sum_{p}=\frac{V}{\hbar^{3}} \int d^{3}p$ from page 42 to get
 - **equation of state** $$\frac{p}{k_{B}T} = \frac{4\pi}{h^{3}}(2s+1) \int_{0}^{\infty} p^{2}\log(1+ze^{-\beta \epsilon_{p }}) dp$$
 - **particle number** (general expression) $$n = \frac{1}{v} = \frac{N}{V}= \frac{4\pi}{h^{3}} (2s+1) \int_{0}^{\infty} p^{2} \frac{1}{z^{-1}e^{\beta \epsilon_{p}}+1} dp$$
@@ -345,3 +343,115 @@ Absorb energy difference between spins parallel and antiparallel to applied fiel
 
 ___
 # 3.7 Bose gas
+
+Again, *Neglect all particle interactions!*
+Two possible situations: 
+- System with well-defined particle number. E.g. bosonic atomg, $^{4}\text{He}$, ...
+	- Conserved N
+	- Described by canonical or grand canonical ensemble. 
+	- At low temperatures, large fraction of bosons occupie ground state, forming Bose-Einstein consensate (BEC)
+- Bosons resulting as modes of harmonic oscillators with no fixed particle number. E.g. Photons, phonons, magnons etc. 
+	- N not conserved. Number can change due to interactions with matter
+	- Photons can be created or destroyed by emisison and absorption processes
+	- Chemical potential $\mu=0$ since there is not conservation law fixing their number
+
+## 3.7.1 Bosonic Atoms
+
+Consider bosons without spin ($S=0$), for example $^{4}\text{He}$. 
+Analogous to [[#3.6 Fermi gas]], introduce special functions of z. 
+- **equation of state**: $$\boxed{\frac{p}{k_{B}T} = \frac{1}{\lambda^{3}} g_{\frac{5}{2}}(z) = \frac{1}{\lambda^{3}} \sum_{l=1}^{\infty} \frac{z^{l}}{l^{5/2}}}$$
+- **particle number**: $$\boxed{\frac{1}{v}=\frac{N}{V}= \frac{1}{\lambda^{3}} g_{\frac{3}{2}}(z) = \frac{1}{\lambda^{3}} \sum_{l=1}^{\infty} \frac{z^{l}}{l^{\frac{3}{2}}}}$$
+- Both grow linearly from zero for small z. $g_{\frac{3}{2}}$ has divergent derivative for $z \to 1$. Concentrate only on range $0 \lt z \le 1$, such that $\mu(T) \le 0$. Then
+	- $g_{\frac{3}{2}}(1) = \zeta\left( \frac{3}{2} \right) \approx 2.612$ -> sets *critical density*
+	- $g_{\frac{5}{2}} \approx 1.342$
+- Bose statistics lead to enhanced occupancy of low-energy states, visible as by how $g\left( \frac{3}{2} \right)$ behaves at $z=1$.
+
+![[specialFunctionBehavior.png|200]]
+## 3.7.2 High-temperature and low-density limit
+
+Like [[#3.6.1 High-temperature and low-density limit|Fermions]], Bosons behave just like classical ideal gas. 
+- Thermal de Broglie wavelength $\lambda$ is small -> quantum overlap is negligible -> classical ideal gas behavior
+
+However, quantum corrections are interesting:
+- quantum correction reduces classical ideal gas **pressure:** $$p(T) = \frac{N}{V} k_{B}T \left\{ 1 - \frac{\lambda^{3}n}{2^{\frac{5}{2}}} +\dots \right\}$$. 
+- Yields **compressibility** $$\kappa_{T} = -\frac{1}{V} \left( \frac{ \partial V }{ \partial p } \right)_{T,N} = \frac{V}{Nk_{B}T} \frac{1}{1- \frac{\lambda^{3}n}{2^{^{3/2}}} }$$ 
+- For fermions, the quantum nature diminishes the compressibility. Here, it is enhanced!
+- In this approximation, compressibility even diverges if $\lambda^{3}n = 2^{3/2}$, so at low energies or high temperatures. Indicates instability of bose gas (see below)
+
+## 3.7.3 Low-temperature and high-density limit: Bose-Einstein condensate
+
+Looking at special functions, $g_{\frac{3}{2}}(z)$ increases monotonatically with z. For decreasing $T$, thermal wavelength $\lambda \propto T^{-1/2}$ increases. Thus, $z$ has to increase in order to satisfy [[#3.7.1 Bosonic Atoms|equation of state]]. This apparently means that particles "see" each other as waves.
+- Thus, $\mu$ approaches singular point at 0 (for $z=1$), which is determined by $g_{\frac{3}{2}}(1) = \zeta\left( \frac{3}{2} \right) = \lambda^{3}n$.
+- A macroscopic number of particles condense into a ground state $p=0$.
+- Defines *critical Temperature* $T_{c}$ and *critical volume* $V_{c}$ below which a new state of the bose has occurs
+- **critical temperature:** from $\lambda_{c}=\sqrt{ \frac{2\pi \hbar^{2}}{mk_{B}T_{c}} }$ $$n\lambda_{c}^{3}=\zeta( 3 /2) \Rightarrow T_{c}= \frac{2\pi \hbar^{2}}{mk_{B}}\left( \frac{n}{\zeta\left( \frac{3}{2} \right)} \right)^{\frac{2}{3}}$$
+
+What happens for $T\lt T_{c}$ or $V\lt V_{c}$?
+$!$ Problem arises in treating sum as integral: $N=\sum_{p} \frac{1}{e^{\beta(\epsilon_{p}-\mu)}-1} \to \frac{V}{h^{3}} \int \frac{1}{e^{\beta(\epsilon_{p}-\mu)}-1} d^{3}p$
+- Integral does not count population of state $p=0$ ($\epsilon_{p=0}=0$) properly, which diverges for $z\to 1$.
+	- $N_{0} = \frac{1}{z^{-1}-1}$ must be added to integral 
+- For below critical temperatures or volumes, occupation of the $p=0$ state becomes macroscopic ($\langle n_{p=0} \rangle /N \gt 0$) and can not neglect this contribution anymore! 
+	- *correct density* is $$n=\frac{1}{\lambda^{3}}g_{\frac{3}{2}}(z) + n_{0}(T) = n_{n}(T) + n_{0}(T)$$
+	- $n_{0}(T)$ is the density of bosons in the single-particle groundstate ($p=0$). These form the *Bose-Einstein condensate*
+- have phase transition at $T_{c}$. Encounter a "two-fluid" system where the total particle density splits in a condensed fraction $n_{0}$ and a normal fraction $n_{n}$:
+
+![[condensateFraction.png|Phase diagram and temperature dependence of condensate fraction|300]]
+- *temperature dependence of* **Condensate fraction $n_{0}$:** $$n_{0}(T) = n\left[ 1- \left( \frac{T}{T_{c}} \right)^{\frac{3}{2}} \right]$$
+
+- **equation of state** $$p=\begin{cases}
+\frac{k_{B}T}{\lambda^{3}} g_{\frac{5}{2}}(z),&V \gt V_{c} \\
+\frac{k_{B}T}{\lambda^{3}} g_{\frac{5}{2}}(1),&V \lt V_{c}
+\end{cases}$$
+- **Compressibility
+	- First determine $\frac{ \partial V }{ \partial z }=-N\lambda^{3} \frac{g'_{\frac{3}{2}}(z)}{g_{\frac{3}{2}}(z)^{2}}$ with notation $g'_{n}(z) = \frac{k_{B}T}{\lambda^{3}} g'_{\frac{5}{2}}(z) \frac{ \partial z }{ \partial V }$
+	- $$\frac{ \partial p }{ \partial V }=\frac{k_{B}T}{\lambda^{3}} g'_{\frac{5}{2}}(z) \frac{ \partial z }{ \partial V } \Rightarrow \kappa_{T}=-\frac{1}{V} \left( \frac{ \partial V }{ \partial p } \right)_{T,N}=\frac{N\lambda^{6}}{Vk_{B}Tg_{\frac{3}{2}}(z)^{2}} \frac{g'_{\frac{3}{2}}(z)}{g'_{\frac{5}{2}}(z)}$$
+	- Compressibility diverges at transition $V\to V_{c}$ (or $T\to T_{c}$), since $g'_{\frac{3}{2}}(z)\to{0}$ for $z\to 1$.
+	- In condensed phase, the pressure is independent of V, as seen in equation of state. 
+	- $\Rightarrow$ Condensed Phase is *infinitely compressible* / doesnt resist to compression
+
+
+### Further thermodynamic quantities of Bose-Einstein condensate
+- **Entropy:** $$S(T,V,\mu) = -\left( \frac{ \partial \Omega }{ \partial T }  \right)_{V,\mu} = \left( \frac{ \partial pV }{ \partial T }  \right)_{V,\mu} = \begin{cases}
+Nk_{B}\left( \frac{5v}{2\lambda^{3}} g_{\frac{5}{2}}(z)-\log z \right) & T \gt T_{c} \\
+Nk_{B} \frac{5}{2} \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)} \left( \frac{T}{T_{c}}^{\frac{3}{2}}   \right)  & T\lt T_{c} 
+\end{cases}$$
+	- *Approaches zero in zero-temperature* limit. For $T\lt T_{c}$ can view as $$\frac{S}{N}=s\left( \frac{T}{T_{c}} \right)^{\frac{3}{2}}= \frac{n_{n}(T)}{n}s\quad\text{with}\quad s=\frac{5}{2}k_{B}  \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)}$$
+	- $s$ is the *specific entropy* (entropy per normal particle). A non-vanishing contbutinon to entropy is only provided by the normal fraction in two-fluid model
+	- The normal fraction carries the entropy. Condensed fraction is *perfectly ordered* and has no energy contribution.
+- **Heat capacity:** At fixed particle number N, from internal energy $U=\frac{3}{2}pV$ $$C_{V} = \left( \frac{ \partial U }{ \partial T }  \right)_{V,N} = \begin{cases}
+Nk_{B} \left( \frac{15v}{4\lambda^{3}} g_{\frac{5}{2}}(z) - \frac{9}{4} \frac{g_{\frac{3}{2}}(z)}{g_{\frac{1}{2}}(z)} \right)  & T \gt T_{c} \\ \\
+Nk_{B} \frac{15}{4} \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)} \left( \frac{T}{T_{c}} \right)^{\frac{3}{2}}  & T \lt T_{c}
+\end{cases}$$
+	- Also approcahes zero in zero-temperature limit. Has a cusp at $T=T_{c} \Rightarrow$ second order phase transition. 
+
+![[heatCapacityBoseEinstein.png|Heat capacity with cusp at tansition. Vanishes towards zero at zero temperature. Approaches equipartition value for high temperatures|300]]
+
+
+### Phase diagrams of state variables
+![[PhaseDiagramsStateVariables.png]]
+
+*p-v-diagram:*
+- phase transition line $\frac{p_{0}v^{\frac{5}{3}=}h^{2}}{2\pi m} \frac{g_{\frac{5}{2}}(1)}{\left[ g_{\frac{3}{2}}(1) \right]^{\frac{5}{3}}}$
+- isothermal lines reach the transition line with zero slope -> compressibility diverges
+*p-T-diagram:*
+- the condensed phase corresponds to transition lines. There is no accessible space above the transition line.
+- phase transition line: $p_{0} = \frac{k_{B}T}{\lambda^{3}} g_{\frac{5}{2}}(1) \propto T^{\frac{5}{2}}$
+	- This is *vapor pressure* (constant for $V \lt V_c$)
+
+Determine **latent heat** per particle using *Clausiud-Clapeyron* relation:
+$$\frac{dp_{0}}{dT = \frac{l}{T\Delta v}} \quad\text{with}\quad l=T\Delta s$$
+- latent heat per particle $l$ takes no specific volume compared to normal fraction. Thus, $\Delta v=v_{c}$ and obtain (with $\lambda^{3}=v_{c}g_{\frac{3}{2}}(1)$)$$l=Tv_{c} \frac{dp_{0}}{dT} = Tv_{c} \frac{5}{2} k_{B} \frac{g_{\frac{5}{2}}(1)}{\lambda^{3}} = T \frac{5}{2} k_{B} \frac{g_{\frac{5}{2}}(1)}{g_{\frac{3}{2}}(1)}$$
+	- consistent with result on specific entropy $s$ #ToDo #clarify 
+
+
+Example of Bose-Einstein condensate is quantum fluid $^{4}\text{He}$, showing condensation to a superfluid phase below $T_{\lambda}=2.18\text{K}$. Discuss in chapter 7 #todo link
+
+! BEC is not just particles in the same spot, it is the *emergence of a collective macroscopic wavefunction*. Have quantum coherence at a macroscopic scale. 
+! The phase transition is driven entirely by quantum statistics. No interactions needed!
+
+## Comparison Fermions and Bosons
+![[ComparisonFermionsBosons.png]]
+
+___
+
+# 3.8 Photons and Phonons
